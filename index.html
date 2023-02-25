@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="description"
+            content="欢迎来到 LI 同学的网站，谢谢你在茫茫网站中找到这里，我会不断对网站进行更新迭代，让它越来越好"
+        />
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="manifest" href="manifest.json" />
+
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="application-name" content="LI 同学" />
+        <meta name="apple-mobile-web-app-title" content="LI 同学" />
+        <meta name="theme-color" content="#4CC9F0" />
+        <meta name="msapplication-navbutton-color" content="#4CC9F0" />
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+        />
+        <meta name="msapplication-starturl" content="/" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="512x512"
+            href="icons/512.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            type="image/png"
+            sizes="512x512"
+            href="icons/512.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="256x256"
+            href="icons/256.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            type="image/png"
+            sizes="256x256"
+            href="icons/256.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="icons/192.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            type="image/png"
+            sizes="192x192"
+            href="icons/192.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="144x144"
+            href="icons/144.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            type="image/png"
+            sizes="144x144"
+            href="icons/144.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="128x128"
+            href="icons/128.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            type="image/png"
+            sizes="128x128"
+            href="icons/128.png"
+        />
+        <title>LI 同学的网站</title>
+        <style>
+            body {
+                margin: 0;
+                height: 100vh;
+                background-color: #6d695c;
+                background-image: repeating-linear-gradient(
+                        120deg,
+                        rgba(255, 255, 255, 0.1),
+                        rgba(255, 255, 255, 0.1) 1px,
+                        transparent 1px,
+                        transparent 60px
+                    ),
+                    repeating-linear-gradient(
+                        60deg,
+                        rgba(255, 255, 255, 0.1),
+                        rgba(255, 255, 255, 0.1) 1px,
+                        transparent 1px,
+                        transparent 60px
+                    ),
+                    linear-gradient(
+                        60deg,
+                        rgba(0, 0, 0, 0.1) 25%,
+                        transparent 25%,
+                        transparent 75%,
+                        rgba(0, 0, 0, 0.1) 75%,
+                        rgba(0, 0, 0, 0.1)
+                    ),
+                    linear-gradient(
+                        120deg,
+                        rgba(0, 0, 0, 0.1) 25%,
+                        transparent 25%,
+                        transparent 75%,
+                        rgba(0, 0, 0, 0.1) 75%,
+                        rgba(0, 0, 0, 0.1)
+                    );
+                background-size: 70px 120px;
+            }
+
+            * {
+                /* border: 1px solid black; */
+                color: white;
+            }
+
+            header {
+                background-color: rgb(22, 22, 22);
+                height: 60px;
+                justify-content: space-between;
+            }
+
+            header div {
+                line-height: 60px;
+                text-align: center;
+                padding: 0 10px;
+                margin: 0 10px;
+            }
+
+            main {
+                align-items: center;
+            }
+
+            main h1:hover {
+                background-color: rgba(76, 201, 240, 0.7);
+                border-radius: 50px;
+                box-shadow: 10px 10px 99px 6px rgba(76, 201, 240, 1);
+            }
+
+            main h1 {
+                letter-spacing: 3px;
+                font-family: 'Palatino Linotype', 'Book Antiqua', Palatino,
+                    serif;
+                padding: 10px;
+                margin-top: 10vh;
+                color: rgb(0, 255, 242);
+            }
+
+            .flex {
+                display: flex;
+            }
+
+            .column {
+                flex-direction: column;
+            }
+
+            .flex-1 {
+                flex: 1;
+            }
+
+            .menuitem a {
+                text-decoration: none;
+            }
+
+            .menuitem:hover {
+                background-color: rgb(0, 255, 242);
+            }
+
+            .menuitem:hover a {
+                color: black;
+            }
+
+            .menuitem {
+                cursor: pointer;
+            }
+
+            .card {
+                background-color: white;
+                margin: 10px;
+                padding: 10px;
+                border-radius: 20px;
+            }
+
+            .card h3 {
+                color: black;
+                border-bottom: 1px solid #ccc;
+            }
+
+            .card p {
+                color: #999;
+            }
+
+            footer {
+                height: 60px;
+                text-align: center;
+            }
+
+            @media (max-width: 500px) {
+                .cardBox {
+                    flex-direction: column;
+                }
+
+                .info {
+                    max-width: 300px;
+                }
+            }
+        </style>
+    </head>
+    <body class="flex column">
+        <header class="flex">
+            <div>LI 同学</div>
+            <div class="flex">
+                <div class="menuitem"><a href="/">首页</a></div>
+                <div class="menuitem"><a href="/">博客</a></div>
+                <div class="menuitem"><a href="/">资源</a></div>
+            </div>
+        </header>
+        <main class="flex-1 flex column">
+            <h1>欢迎来到 LI 同学的网站</h1>
+            <p id="jinrishici-sentence">正在加载今日诗词....</p>
+            <p style="line-height: 30px; color: #ccc" class="info">
+                我是谁：一名初中生，正在勤奋学习中。<br />
+                兴趣：玩魔方 &amp; 写代码。<br />
+                谢谢你在茫茫网站中找到这里，我会不断对网站进行更新迭代，让它越来越好
+            </p>
+            <h2>这里有：</h2>
+            <div class="flex cardBox">
+                <div class="card flex-1">
+                    <h3>我的文章</h3>
+                    <p>在这里记录的各种文章（开发中）</p>
+                </div>
+                <div class="card flex-1">
+                    <h3>资源收录</h3>
+                    <p>本人收录的各种网站（开发中）</p>
+                </div>
+                <div class="card flex-1">
+                    <h3>敬请期待</h3>
+                    <p>敬请期待</p>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div>&copy;2023 LI 同学 All rights reserved.</div>
+        </footer>
+        <script
+            src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
+            charset="utf-8"
+        ></script>
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function () {
+                    navigator.serviceWorker.register('sw.js')
+                })
+            }
+        </script>
+    </body>
+</html>
