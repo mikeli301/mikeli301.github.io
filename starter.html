@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="LI 同学制作的起始页，欢迎大家使用" />
+        <title>起始页 | LI 同学的网站</title>
+        <style>
+            body {
+                background-image: url(https://baotangguo.cn:8081/);
+                display: flex;
+                margin: 0;
+                flex-direction: column;
+                align-items: center;
+            }
+            button[onclick='openSetting()'] {
+                align-self: flex-start;
+                margin: 10px;
+                border: none;
+                background-color: initial;
+                font-size: large;
+            }
+            button[onclick='openSetting()']:hover {
+                background-color: #eee;
+                opacity: 0.7;
+            }
+            #searchBox input {
+                outline: none;
+                text-align: center;
+                border-radius: 15px 0 0 15px;
+                border: none;
+                width: 300px;
+                transition: all 0.7s 0.2s;
+                font-size: medium;
+            }
+            #searchBox {
+                height: 40px;
+                margin-top: 5vh;
+                display: flex;
+            }
+            #searchBox button {
+                background-color: #4662d9;
+                border-radius: 0 15px 15px 0;
+                border: none;
+                width: 40px;
+            }
+            #time {
+                font-weight: bold;
+                font-size: 40px;
+                background: linear-gradient(to right, red, green);
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+                margin-top: 15vh;
+            }
+            #setting {
+                border: none;
+                border-radius: 5px;
+            }
+            .btnBox {
+                display: flex;
+                justify-content: space-around;
+                margin-top: 10px;
+            }
+            .btnBox button {
+                background-color: #4662d9;
+                border: none;
+                margin: 10px;
+                padding: 5px;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            @media (min-width: 600px) {
+                #searchBox input:focus {
+                    width: 45vw;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <dialog id="setting">
+            <form method="dialog">
+                <label>
+                    选择搜索引擎：
+                    <select></select>
+                </label>
+                <div class="btnBox">
+                    <button id="confirmBtn">确定</button>
+                    <button value="cancel">取消</button>
+                </div>
+            </form>
+        </dialog>
+        <button onclick="openSetting()">⚙️</button>
+        <p id="time">00:00:00</p>
+        <form id="searchBox" method="get">
+            <input type="search" placeholder="从这里开始~" />
+            <button type="submit">🔍</button>
+        </form>
+        <script>
+            const engineList = [
+                {
+                    name: '必应',
+                    url: 'https://cn.bing.com/search',
+                    search: 'q'
+                },
+                {
+                    name: '百度',
+                    url: 'https://www.baidu.com/s',
+                    search: 'wd'
+                },
+                {
+                    name: '360搜索',
+                    url: 'https://www.so.com/s',
+                    search: 'q'
+                }
+            ]
+            setInterval(() => {
+                let date = new Date(),
+                    h = date.getHours(),
+                    m = date.getMinutes(),
+                    s = date.getSeconds()
+                let check = t => (t < 10 ? '0' + t : t)
+                const time = document.getElementById('time')
+                time.innerText = `${check(h)}: ${check(m)}: ${check(s)}`
+            }, 1000)
+            let engine = engineList.find(
+                item => item.name === (localStorage.getItem('engine') || '必应')
+            )
+            const settingDialog = document.getElementById('setting')
+            const searchBox = document.getElementById('searchBox')
+            const searchInput = searchBox.querySelector('input')
+            searchBox.action = engine.url
+            searchInput.name = engine.search
+            if (typeof settingDialog.showModal !== 'function') {
+                settingDialog.hidden = true
+                alert(
+                    '当前浏览器不支持网站的某些功能，为了您的使用体验，请切换浏览器'
+                )
+            }
+            function openSetting() {
+                settingDialog.showModal()
+                const selectEl = settingDialog.querySelector('select')
+                const confirmBtn = settingDialog.querySelector('#confirmBtn')
+                confirmBtn.value = engine.name
+                for (const key in engineList) {
+                    const item = engineList[key]
+                    let html = `<option value="${item.name}" ${
+                        engine.name === item.name ? 'selected' : ''
+                    }>${item.name}</option>`
+                    selectEl.innerHTML += html
+                }
+                selectEl.addEventListener('change', () => {
+                    confirmBtn.value = selectEl.value
+                })
+                settingDialog.addEventListener('close', () => {
+                    selectEl.innerHTML = ''
+                    if (settingDialog.returnValue !== 'cancel') {
+                        localStorage.setItem(
+                            'engine',
+                            settingDialog.returnValue
+                        )
+                        location.reload()
+                    }
+                })
+            }
+        </script>
+    </body>
+</html>
